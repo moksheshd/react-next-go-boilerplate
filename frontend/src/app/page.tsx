@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslation } from 'react-i18next';
 import { 
   Card, 
   CardHeader, 
@@ -10,10 +11,14 @@ import {
   CardFooter 
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Home() {
+  const { t } = useTranslation();
+  
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-background">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-background relative">
+      <LanguageSwitcher />
       {/* Next.js Logo */}
       <div className="mb-8">
         <Image
@@ -29,17 +34,15 @@ export default function Home() {
       {/* Card using shadcn Card component */}
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-2xl">Welcome to Next.js</CardTitle>
+          <CardTitle className="text-2xl">{t('welcome.title')}</CardTitle>
           <CardDescription>
-            A modern web framework built with React 19
+            {t('welcome.description')}
           </CardDescription>
         </CardHeader>
         
         <CardContent>
           <p className="text-muted-foreground">
-            This is a simple Next.js application with React 19 and TypeScript.
-            The project is set up with all the specified package versions frozen at the major version level.
-            This page uses shadcn components for the card and button.
+            {t('content.description')}
           </p>
         </CardContent>
         
@@ -49,7 +52,7 @@ export default function Home() {
             className="w-full" 
             onClick={() => alert('Button clicked!')}
           >
-            Get Started
+            {t('button.getStarted')}
           </Button>
         </CardFooter>
       </Card>

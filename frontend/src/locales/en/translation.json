@@ -1,0 +1,16 @@
+{
+  "welcome": {
+    "title": "Welcome to Next.js",
+    "description": "A modern web framework built with React 19"
+  },
+  "content": {
+    "description": "This is a simple Next.js application with React 19 and TypeScript. The project is set up with all the specified package versions frozen at the major version level. This page uses shadcn components for the card and button."
+  },
+  "button": {
+    "getStarted": "Get Started"
+  },
+  "language": {
+    "english": "English",
+    "hindi": "Hindi"
+  }
+}
