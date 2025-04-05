@@ -1,0 +1,85 @@
+# Cline Rules
+
+This file contains rules and guidelines for the react-next-go-boilerplate project.
+
+## Frontend Rules
+
+### Code Formatting
+- Use TypeScript for all new code
+- Follow the Prettier configuration in .prettierrc
+- Use 2 spaces for indentation
+- Use single quotes for strings
+- Add semicolons at the end of statements
+- Maximum line length of 100 characters
+
+### File Organization
+- Place React components in src/components
+- Place reusable UI components in src/components/ui
+- Place pages in src/app
+- Place utility functions in src/lib
+- Place translations in src/locales/{language}/translation.json
+
+### Naming Conventions
+- Use PascalCase for React components and their files (e.g., Button.tsx)
+- Use camelCase for utility functions and variables
+- Use kebab-case for CSS class names
+- Use descriptive names that reflect the purpose of the component or function
+
+### Import Ordering
+- React imports first
+- External library imports next
+- Internal absolute imports next
+- Internal relative imports last
+- Sort imports alphabetically within each group
+
+### Component Structure
+- Use functional components with hooks
+- Use the "use client" directive for client components
+- Extract complex logic into custom hooks
+- Keep components focused on a single responsibility
+- Use TypeScript interfaces for props
+
+### Build Configuration
+- Maintain static export (SPA mode) configuration in next.config.ts
+- Ensure all links and assets are compatible with static export
+
+### Internationalization
+- Use i18next with react-i18next for translations
+- Store translations in JSON files under src/locales/{language}/translation.json
+- Use nested keys for organizing translations (e.g., 'welcome.title')
+- Use the useTranslation hook to access translations in components
+- Handle language switching through the established LanguageSwitcher pattern
+
+### Data Fetching
+- Use SWR for data fetching with the custom configuration in src/lib/swr.ts
+- Implement the SWRProvider pattern for global configuration
+- Use the custom useSWR hook from @/lib/swr for consistent error handling
+
+## Backend Rules
+
+### Code Formatting
+- Follow Go standard formatting (gofmt)
+- Use tabs for indentation
+- Maximum line length of 100 characters
+
+### File Organization
+- Follow standard Go project layout
+- Place API handlers in handlers/ directory
+- Place database models in models/ directory
+- Place business logic in services/ directory
+
+### Naming Conventions
+- Use camelCase for variable names
+- Use PascalCase for exported functions and types
+- Use snake_case for database field names
+- Use descriptive names that reflect the purpose of the function or variable
+
+### Error Handling
+- Always check errors
+- Return meaningful error messages
+- Use custom error types for domain-specific errors
+
+### Testing
+- Write unit tests for all packages
+- Aim for high test coverage
+- Use table-driven tests where appropriate

@@ -1,6 +1,16 @@
 # Frontend
 
-This is the frontend part of the react-next-go-boilerplate project.
+This is the frontend part of the react-next-go-boilerplate project. It's a modern web application built with Next.js, React, and TypeScript, featuring internationalization, data fetching with SWR, and UI components from shadcn.
+
+## Features
+
+- **Next.js App Router**: Modern routing system with React Server Components
+- **Internationalization (i18n)**: Support for multiple languages (English and Hindi)
+- **SWR Data Fetching**: Efficient data fetching with stale-while-revalidate strategy
+- **Shadcn UI Components**: Beautiful, accessible UI components
+- **TypeScript**: Type-safe JavaScript
+- **Tailwind CSS**: Utility-first CSS framework
+- **Static Export**: Configured for static site generation (SPA mode)
 
 ## Technologies Used
 
@@ -29,6 +39,39 @@ This is the frontend part of the react-next-go-boilerplate project.
 - lucide-react: ^0.487.0
 - tailwind-merge: ^3.1.0
 - tw-animate-css: ^1.2.5
+
+### Internationalization
+
+- i18next: ^24.2.3
+- i18next-browser-languagedetector: ^8.0.4
+- react-i18next: ^15.4.1
+
+### Data Fetching
+
+- swr: ^2.3.3
+
+## Project Structure
+
+```
+frontend/
+├── public/              # Static assets
+├── src/
+│   ├── app/             # Next.js App Router pages
+│   ├── components/      # React components
+│   │   ├── ui/          # Shadcn UI components
+│   │   ├── I18nProvider.tsx
+│   │   ├── LanguageSwitcher.tsx
+│   │   └── SWRProvider.tsx
+│   ├── lib/             # Utility functions and configurations
+│   │   ├── i18n.ts      # i18next configuration
+│   │   ├── swr.ts       # SWR configuration
+│   │   └── utils.ts     # Utility functions
+│   └── locales/         # Translation files
+│       ├── en/          # English translations
+│       └── hi/          # Hindi translations
+├── next.config.ts       # Next.js configuration
+└── ...                  # Other configuration files
+```
 
 ## Getting Started
 
@@ -60,6 +103,39 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `npm run lint` - Run ESLint
 - `npm run format` - Format code with Prettier
 - `npm run commit` - Commit changes using Commitizen
+
+## Internationalization
+
+The project supports multiple languages using i18next. Currently, English and Hindi are supported. The language switcher is available in the top-right corner of the application.
+
+To add a new language:
+
+1. Create a new folder in `src/locales` with the language code (e.g., `fr` for French)
+2. Add a `translation.json` file with the translations
+3. Update the `i18n.ts` file to include the new language
+
+## Data Fetching
+
+The project uses SWR for data fetching. The SWR configuration is in `src/lib/swr.ts`. The default fetcher is configured to handle errors and return JSON data.
+
+Example usage:
+
+```tsx
+import { useSWR } from '@/lib/swr';
+
+function Profile() {
+  const { data, error, isLoading } = useSWR('/api/user');
+
+  if (error) return <div>Failed to load</div>;
+  if (isLoading) return <div>Loading...</div>;
+  
+  return <div>Hello {data.name}!</div>;
+}
+```
+
+## Static Export
+
+The project is configured for static export (SPA mode) in `next.config.ts`. This means that the application can be deployed to any static hosting service like Vercel, Netlify, or GitHub Pages.
 
 ## Commit Convention
 
